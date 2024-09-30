@@ -18,10 +18,10 @@ public:
 	void RenderQuad(float posX, float posY, float sizeX, float sizeY);
 	void RenderLine(float startX, float startY, float endX, float endY);
 	GLFWwindow *GetWindow();
-
-private:
 	float ScreenWidth;
 	float ScreenHeight;
+
+private:
 	GLFWwindow *window;
 	Shader *shader;
 	glm::mat4x4 projMat;

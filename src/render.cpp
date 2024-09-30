@@ -4,11 +4,6 @@ using namespace std;
 
 GLFWwindow *window;
 
-void framebuffer_size_callback(GLFWwindow *window, int width, int height)
-{
-	glViewport(0, 0, width, height);
-}
-
 void Render::RenderInit()
 {
 	if (!glfwInit())
@@ -22,6 +17,7 @@ void Render::RenderInit()
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 	glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, GL_TRUE);
+	glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
 
 	window = glfwCreateWindow(800, 600, "GameOfLife", NULL, NULL);
 	if (window == NULL)
@@ -39,8 +35,6 @@ void Render::RenderInit()
 	glViewport(0, 0, 800, 600);
 
 	Render::shader = new Shader("C:/LearnCpp/GameOfLife/shaders/default.vert", "C:/LearnCpp/GameOfLife/shaders/default.frag");
-
-	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
 	projMat = CreateProjMat(0, 0, 800, 600);
 
